@@ -26,18 +26,11 @@ MMEngine	0.10.7pip install
 ```
 
 
-
-
-
-
-
-
-
 # Dataset
 
 The WRD  used in this project was collected in Harbin, China, and is hosted on Zenodo. The dataset consists of nearly 200,000 annotated image pairs categorized into 8 different classes.
 
-![alt text](picture\tree.png)
+![alt text](picture/tree.png)
 
 
 
