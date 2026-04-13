@@ -34,14 +34,16 @@ The WRD  used in this project was collected in Harbin, China, and is hosted on Z
 
 
 
-# Run the validation script
+# Run the train/val script
 
 
 
 dual_stream_modules4m.py: This newly added script contains the specific processing methods and architecture for handling the dual-modality data inputs.
 
-
+```
+python train.py configs/mynet_m.py 
+```
 
 ```
-python test.py configs/mynet.py epoch_150.pth
+python val.py configs/mynet_m.py weight/m_epoch.pth
 ```
