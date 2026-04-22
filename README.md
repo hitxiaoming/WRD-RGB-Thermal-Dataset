@@ -32,18 +32,26 @@ The WRD  used in this project was collected in Harbin, China, and is hosted on Z
 
 ![alt text](picture/tree.png)
 
+# Pre-trained Model Weights
+
+All model weights are hosted on Hugging Face. You can visit the [Hugging Face Repository](https://huggingface.co/hitxiaoming/WRD-RGB-Thermal-Dataset-and-Models) to view them, or download them directly using the links below:
+
+* [`db_convnextv2.pth` (276 MB)](https://huggingface.co/hitxiaoming/WRD-RGB-Thermal-Dataset-and-Models/resolve/main/db_convnextv2.pth?download=true)
+* [`sp_convnextv2.pth` (150 MB)](https://huggingface.co/hitxiaoming/WRD-RGB-Thermal-Dataset-and-Models/resolve/main/sp_convnextv2.pth?download=true)
+* [`sp_swinv2.pth` (153 MB)](https://huggingface.co/hitxiaoming/WRD-RGB-Thermal-Dataset-and-Models/resolve/main/sp_swinv2.pth?download=true)
+
 
 
 # Run the train/val script
 
+dual_stream_modules.py: This newly added script contains specific processing methods and architectures designed for handling dual-modality data inputs, applicable to common model types (CNNs, Transformers, and hybrid architectures).
 
-
-dual_stream_modules4m.py: This newly added script contains the specific processing methods and architecture for handling the dual-modality data inputs.
-
-```
-python train.py configs/mynet_m.py 
-```
+dual_stream_modulesxx.py: This series consists of data processing scripts designed for specific network architectures with shared parameters.
 
 ```
-python val.py configs/mynet_m.py weight/m_epoch.pth
+python train_convnextv2.py configs/sp_convnextv2.py 
+```
+
+```
+python demo.py configs/sp_convnextv2.py weight/sp_convnextv2.pth
 ```
