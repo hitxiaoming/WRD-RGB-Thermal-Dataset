@@ -36,9 +36,8 @@ The WRD  used in this project was collected in Harbin, China, and is hosted on Z
 
 All model weights are hosted on Hugging Face. You can visit the [Hugging Face Repository](https://huggingface.co/hitxiaoming/WRD-RGB-Thermal-Dataset-and-Models) to view them, or download them directly using the links below:
 
-* [`db_convnextv2.pth` (276 MB)](https://huggingface.co/hitxiaoming/WRD-RGB-Thermal-Dataset-and-Models/resolve/main/db_convnextv2.pth?download=true)
 * [`sp_convnextv2.pth` (150 MB)](https://huggingface.co/hitxiaoming/WRD-RGB-Thermal-Dataset-and-Models/resolve/main/sp_convnextv2.pth?download=true)
-* [`sp_swinv2.pth` (153 MB)](https://huggingface.co/hitxiaoming/WRD-RGB-Thermal-Dataset-and-Models/resolve/main/sp_swinv2.pth?download=true)
+
 
 
 
@@ -49,7 +48,7 @@ dual_stream_modules.py: This newly added script contains specific processing met
 dual_stream_modulesxx.py: This series consists of data processing scripts designed for specific network architectures with shared parameters.
 
 ```
-python train_convnextv2.py configs/sp_convnextv2.py 
+python train.py \ --config configs/db_convnextv2.py \ --work-dir db_convnextv2 
 ```
 
 ```

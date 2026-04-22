@@ -4,8 +4,8 @@ LOG_INTERVAL = 10
 MAX_EPOCH = 150
 SAVE_INTERVAL = 20
 TRAIN_NUM_WORKERS = 8
-TR_DATA_ROOT = 'data\\WRD200K8V1\\rgb\\train'
-VAL_DATA_ROOT = 'data\\WRD200K8V1\\rgb\\val'
+TR_DATA_ROOT = 'data\\WRD\\rgb\\train'
+VAL_DATA_ROOT = 'data\\WRD\\rgb\\val'
 VAL_INTERVAL = 20
 VAL_NUM_WORKERS = 4
 auto_scale_lr = dict(base_batch_size=1024)
@@ -139,7 +139,7 @@ test_dataloader = dict(
     batch_size=32,
     collate_fn=dict(type='default_collate'),
     dataset=dict(
-        data_root='data\\WRD200K8V1\\rgb\\val',
+        data_root='data\\WRD\\rgb\\val',
         pipeline=[
             dict(type='LoadRGBIRCombined'),
             dict(
@@ -179,7 +179,7 @@ train_dataloader = dict(
     batch_size=32,
     collate_fn=dict(type='default_collate'),
     dataset=dict(
-        data_root='data\\WRD200K8V1\\rgb\\train',
+        data_root='data\\WRD\\rgb\\train',
         pipeline=[
             dict(type='LoadRGBIRCombined'),
             dict(
@@ -254,7 +254,7 @@ val_dataloader = dict(
     batch_size=32,
     collate_fn=dict(type='default_collate'),
     dataset=dict(
-        data_root='data\\WRD200K8V1\\rgb\\val',
+        data_root='data\\WRD\\rgb\\val',
         pipeline=[
             dict(type='LoadRGBIRCombined'),
             dict(

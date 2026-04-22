@@ -2,57 +2,57 @@ BATCH_SIZE = 32
 CLASS_NUMS = 8
 LOG_INTERVAL = 10
 MAX_EPOCH = 150
-SAVE_INTERVAL = 20
+SAVE_INTERVAL = 50
 TRAIN_NUM_WORKERS = 8
 TR_DATA_ROOT = 'data\\WRD\\rgb\\train'
 VAL_DATA_ROOT = 'data\\WRD\\rgb\\val'
-VAL_INTERVAL = 20
+VAL_INTERVAL = 10
 VAL_NUM_WORKERS = 4
 combined_mean = [
-    123.675,
-    116.28,
-    103.53,
-    123.675,
-    116.28,
-    103.53,
+    61.23,
+    61.23,
+    61.23,
+    61.23,
+    61.23,
+    61.23,
 ]
 combined_std = [
-    58.395,
-    57.12,
-    57.375,
-    58.395,
-    57.12,
-    57.375,
+    20.23,
+    20.23,
+    20.23,
+    20.23,
+    20.23,
+    20.23,
 ]
 custom_hooks = [
     dict(interval=1, type='InteractionWeightHook'),
 ]
 custom_imports = dict(
     allow_failed_imports=False, imports=[
-        'dual_stream_modules_convnextv2',
+        'dual_stream_modules_edgenext',
     ])
 data_preprocessor = dict(
     mean=[
-        123.675,
-        116.28,
-        103.53,
-        123.675,
-        116.28,
-        103.53,
+        61.23,
+        61.23,
+        61.23,
+        61.23,
+        61.23,
+        61.23,
     ],
-    num_classes=8,
+    num_classes=7,
     std=[
-        58.395,
-        57.12,
-        57.375,
-        58.395,
-        57.12,
-        57.375,
+        20.23,
+        20.23,
+        20.23,
+        20.23,
+        20.23,
+        20.23,
     ],
     to_rgb=False,
     type='ClsDataPreprocessor')
 default_hooks = dict(
-    checkpoint=dict(interval=20, save_best='auto', type='CheckpointHook'),
+    checkpoint=dict(interval=50, save_best='auto', type='CheckpointHook'),
     logger=dict(interval=10, type='LoggerHook'),
     param_scheduler=dict(type='ParamSchedulerHook'),
     sampler_seed=dict(type='DistSamplerSeedHook'),
@@ -63,21 +63,21 @@ env_cfg = dict(
     dist_cfg=dict(backend='nccl'),
     mp_cfg=dict(mp_start_method='fork', opencv_num_threads=0))
 ir_mean = [
-    123.675,
-    116.28,
-    103.53,
+    61.23,
+    61.23,
+    61.23,
 ]
 ir_std = [
-    58.395,
-    57.12,
-    57.375,
+    20.23,
+    20.23,
+    20.23,
 ]
 launcher = 'none'
 load_from = None
 log_level = 'INFO'
 model = dict(
     backbone=dict(
-        arch='tiny',
+        arch='small',
         drop_path_rate=0.1,
         fix_weights=False,
         gap_before_final_norm=True,
@@ -90,7 +90,7 @@ model = dict(
             0.1,
             0.1,
         ],
-        layer_scale_init_value=0.0,
+        layer_scale_init_value=1e-06,
         out_indices=(3, ),
         rgb2ir_weights=[
             0.1,
@@ -99,12 +99,11 @@ model = dict(
             0.1,
         ],
         symmetric_interaction=False,
-        type='FastRoadNetPlus',
-        use_grn=True),
+        type='DyRoadNet'),
     head=dict(
-        in_channels=1536,
+        in_channels=608,
         loss=dict(label_smooth_val=0.1, type='LabelSmoothLoss'),
-        num_classes=8,
+        num_classes=7,
         type='LinearClsHead'),
     neck=None,
     type='ImageClassifier')
@@ -130,14 +129,14 @@ param_scheduler = [
 randomness = dict(deterministic=False, seed=None)
 resume = False
 rgb_mean = [
-    123.675,
-    116.28,
-    103.53,
+    61.23,
+    61.23,
+    61.23,
 ]
 rgb_std = [
-    58.395,
-    57.12,
-    57.375,
+    20.23,
+    20.23,
+    20.23,
 ]
 test_cfg = dict()
 test_dataloader = dict(
@@ -179,7 +178,7 @@ test_pipeline = [
     dict(crop_size=224, type='CenterCrop'),
     dict(type='PackInputs'),
 ]
-train_cfg = dict(by_epoch=True, max_epochs=150, val_interval=20)
+train_cfg = dict(by_epoch=True, max_epochs=150, val_interval=10)
 train_dataloader = dict(
     batch_size=32,
     collate_fn=dict(type='default_collate'),
@@ -196,20 +195,20 @@ train_dataloader = dict(
             dict(
                 erase_prob=0.25,
                 fill_color=[
-                    123.675,
-                    116.28,
-                    103.53,
-                    123.675,
-                    116.28,
-                    103.53,
+                    61.23,
+                    61.23,
+                    61.23,
+                    61.23,
+                    61.23,
+                    61.23,
                 ],
                 fill_std=[
-                    58.395,
-                    57.12,
-                    57.375,
-                    58.395,
-                    57.12,
-                    57.375,
+                    20.23,
+                    20.23,
+                    20.23,
+                    20.23,
+                    20.23,
+                    20.23,
                 ],
                 max_area_ratio=0.3333333333333333,
                 min_area_ratio=0.02,
@@ -233,20 +232,20 @@ train_pipeline = [
     dict(
         erase_prob=0.25,
         fill_color=[
-            123.675,
-            116.28,
-            103.53,
-            123.675,
-            116.28,
-            103.53,
+            61.23,
+            61.23,
+            61.23,
+            61.23,
+            61.23,
+            61.23,
         ],
         fill_std=[
-            58.395,
-            57.12,
-            57.375,
-            58.395,
-            57.12,
-            57.375,
+            20.23,
+            20.23,
+            20.23,
+            20.23,
+            20.23,
+            20.23,
         ],
         max_area_ratio=0.3333333333333333,
         min_area_ratio=0.02,

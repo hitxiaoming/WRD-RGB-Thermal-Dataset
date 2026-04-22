@@ -8,9 +8,7 @@ from mmpretrain.models.classifiers import ImageClassifier
 from mmcv.transforms import BaseTransform
 from mmpretrain.datasets import CustomDataset
 
-# -------------------------------------------------------------------
-# Dual-branch model
-# -------------------------------------------------------------------
+
 @DATASETS.register_module()
 class RGBIRPairDataset(CustomDataset):
 
