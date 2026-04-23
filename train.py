@@ -60,16 +60,13 @@ def parse_args():
         choices=['none', 'pytorch', 'slurm', 'mpi'],
         default='none',
         help='job launcher')
-    # When using PyTorch version >= 2.0.0, the `torch.distributed.launch`
-    # will pass the `--local-rank` parameter to `tools/train.py` instead
-    # of `--local_rank`.
+
     parser.add_argument('--local_rank', '--local-rank', type=int, default=0)
     args = parser.parse_args()
     if 'LOCAL_RANK' not in os.environ:
         os.environ['LOCAL_RANK'] = str(args.local_rank)
 
     return args
-
 
 def merge_args(cfg, args):
     """Merge CLI arguments to config."""
@@ -132,9 +129,7 @@ def merge_args(cfg, args):
 
     if args.cfg_options is not None:
         cfg.merge_from_dict(args.cfg_options)
-
     return cfg
-
 
 def main():
     args = parse_args()
@@ -147,9 +142,6 @@ def main():
     torch.cuda.set_device(gpu_id)
     print(f"[INFO] Using GPU: {torch.cuda.current_device()}")  
 
-
-
-
     cfg = merge_args(cfg, args)
 
     if 'runner_type' not in cfg:
@@ -158,10 +150,8 @@ def main():
     else:
 
         runner = RUNNERS.build(cfg)
-
     # start training
     runner.train()
-
 
 if __name__ == '__main__':
     main()

@@ -154,8 +154,6 @@ def main():
         torch.cuda.set_device(gpu_id)
         print(f"[INFO] Using GPU: {torch.cuda.current_device()}")
 
-
-
     # merge cli arguments to config
     cfg = merge_args(cfg, args)
 
