@@ -1,18 +1,15 @@
-```markdown
 <div align="right">
   <a href="README.md">English</a> | <strong>简体中文</strong>
 </div>
 
-<div align="right">
-  <strong>English</strong> | <a href="README_zh-CN.md">简体中文</a>
-</div>
 
-# WRD-RGB-Thermal-Dataset
+
+
 
 
 # 数据集简介
 
-本项目使用的WRD数据集采集于中国哈尔滨，托管于[Zenodo](https://zenodo.org/records/19503581)。该数据集包含近20万个带标注的图像对，分为8个不同的类别。
+本项目使用的WRD（road-surface classification dataset）数据集采集于中国哈尔滨，托管于[Zenodo](https://zenodo.org/records/19503581)。该数据集包含近20万个带标注的图像对，分为8个不同的类别。
 
 ![alt text](picture/tree.png)
 
@@ -36,7 +33,7 @@ cuDNN	8.7.0
 NVCC	11.8.89
 OpenCV	4.11.0
 MMEngine	0.10.7
-`
+```
 
 
 # 训练权重下载
@@ -56,13 +53,13 @@ dual_stream_modulesxx.py: 本系列脚本包含针对特定网络架构设计的
 
 ```
 python train.py \ --config configs/sp_convnextv2.py \ --work-dir sp_convnextv2 
-`
+```
 
 使用训练好的模型进行推理，以带有共享参数的 ConvNeXtV2 为例。
 
 ```
 python val_demo.py 
-`
+```
 
 ## 引用
 
